@@ -1,0 +1,19 @@
+ <div class="form-container">
+    <h3>Modifier l'utilisateur {{userdetail.name}}</h3>
+    <form action="/userupdated/{{userdetail._id}}" method="POST">
+        <div class="form-group">
+            <label for="name">Nom utilisateur</label>
+            <input type="text" id="name" name="name" required value={{userdetail.name}}>
+        </div>
+        <div class="form-group">
+            <label for="mail">Mail utilisateur</label>
+            <input type="email" id="mail" name="email" required value={{userdetail.email}}>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe utilisateur</label>
+            <input type="password" id="password" name="password" required value={{userdetail.password}}>
+        </div>
+        <button type="submit">Enregistrer</button>
+    </form>
+
+  </div>
