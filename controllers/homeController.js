@@ -12,22 +12,25 @@ exports.homepage = async (req, res) => {
 
 exports.login = async (req, res) => {
     const checkmail = await User.findOne({email: req.body.email}).lean();
-    const checkmailId = checkmail._id;
-    if(!checkmail) {
-        res.send('Cette adresse mail est inconnue')
+    /*const checkmailId = checkmail._id;*/
+    if (checkmail) {
+        const checkpassword = await bcrypt.compare(req.body.password, checkmail.password);
+        if (checkpassword) {
+            const authToken = jwt.sign({_id: checkmail._id.toString()},process.env.TOKEN_KEY/*,{expiresIn: process.env.TOKEN_AGE}*/);
+            res.cookie('jwt',authToken, {httpOnly: true} );
+            /*res.status(200).json({user: checkmail._id});*/
+            res.redirect('tdb');
+        }
+        else { 
+            res.redirect('/');
+            /*res.status(400).json({message: 'Ce mot de passe est erronné' })*/
+        }
     }
-    const checkpassword = await bcrypt.compare(req.body.password, checkmail.password);
-    const authToken = jwt.sign({_id: checkmailId.toString()},process.env.TOKEN_KEY);
-    if(checkpassword) {
-        await User.findOneAndUpdate({
-           authToken: authToken
-        }).where(checkmailId).lean();
-        res.send('ok')
-        /*res.redirect('/tdb');*/
+    else { 
+        res.redirect('/');
+        /*res.status(400).json({message: 'Cette adresse mail est inconnue'})*/
     }
-    else {
-        res.send('Ce mot de passe est erronné')
-    }
+
  }
  
 

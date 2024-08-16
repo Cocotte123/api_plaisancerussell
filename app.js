@@ -1,12 +1,14 @@
 require('dotenv').config({ path:"./.env"});
 
 const express = require('express');
+const cookieparser = require('cookie-parser');
 
 const app = express();
 const port = 8001; /*|| process.env.PORT*/
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cookieparser());
 
 //statuc files
 const path = require('path');
