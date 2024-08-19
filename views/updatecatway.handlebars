@@ -1,0 +1,11 @@
+ <div class="form-container">
+    <h3>Modifier l'état du catway {{catwaydetail.catwayNumber}}</h3>
+    <form action="/catway/list/catwayupdated/{{catwaydetail._id}}" method="POST">
+        <div class="form-group">
+            <label for="catwayState">Etat du catway</label>
+            <input type="text" id="catwayState" name="catwayState" required value={{catwaydetail.catwayState}} class="w-25 p-3">
+        </div>
+        <button type="submit">Enregistrer</button>
+    </form>
+
+  </div>

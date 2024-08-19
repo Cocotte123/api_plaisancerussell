@@ -12,15 +12,16 @@ exports.homepage = async (req, res) => {
 
 exports.login = async (req, res) => {
     const checkmail = await User.findOne({email: req.body.email}).lean();
-    /*const checkmailId = checkmail._id;*/
+    
+    
     if (checkmail) {
         const checkpassword = await bcrypt.compare(req.body.password, checkmail.password);
         if (checkpassword) {
             const authToken = jwt.sign({_id: checkmail._id.toString()},process.env.TOKEN_KEY/*,{expiresIn: process.env.TOKEN_AGE}*/);
             res.cookie('jwt',authToken, {httpOnly: true} );
-            
+            res.cookie('user',checkmail.name);
             /*res.status(200).json({user: checkmail._id});*/
-            res.redirect('tdb');
+            res.redirect('/tdb');
         }
         else { 
             res.redirect('/');
@@ -36,6 +37,6 @@ exports.login = async (req, res) => {
 
  exports.logout = (req, res) => {
     res.cookie('jwt','',{maxAge:1});
-    res.cookie('id','',{maxAge:1});
+    /*res.cookie('id','',{maxAge:1});*/
     res.redirect('/');
  }
