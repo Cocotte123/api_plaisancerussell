@@ -1,5 +1,11 @@
-  <h1>tableau de bord</h1>
-  <h2>Utilisateur:</h2>
+  <h1>Tableau de bord de {{userConnectedDetail}}</h1>
+  <div class="col">
+    <a href="#utilisateur"><button>Utilisateur</button></a>
+    <a href="#catways"><button>Catways</button></a>
+    <a href="#reservations"><button>Réservations</button></a>
+    <a href="/logout"><button>Déconnexion</button></a>
+  </div>
+  <h2 id="utilisateur">Utilisateur:</h2>
   <div class="form-container">
     <h3>Créer un utilisateur</h3>
     <form action="/user" method="POST">
@@ -57,3 +63,28 @@
         </tbody>
     </table>
   </div>
+  <h2 id="catways">Catways:</h2>
+    <div class="form-container">
+        <h3>Créer un catway</h3>
+        <form action="/catway" method="POST">
+            <div class="form-group">
+                <label for="catwayNumber">N° Catway</label>
+                <input type="number" id="catwayNumber" name="catwayNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Type de catway</label>
+                <select id="type" name="type" required>
+                    <option value="short">short</option>
+                    <option value="long">long</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="catwayState">Etat du catway</label>
+                <input type="text" id="catwayState" name="catwayState" required>
+            </div>
+            <button type="submit">Enregistrer</button>
+        </form>
+
+    </div>
+    <a href="/catway/list"><button>Liste des catways</button></a>
+  <h2 id="reservations">Réservations:</h2>

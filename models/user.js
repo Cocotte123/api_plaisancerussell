@@ -22,20 +22,9 @@ const User = mongoose.model('User',{
     updated: {
         type: Date,
         default: Date.now()
-    },
-    authToken: {
-        type: String,
-        required: true,
     }
     
 
 });
-/*
-User.methods.generateAuthTokenAndSaveUser = async function() {
-    const authToken = jwt.sign({_id: this._id.toString()},"klepr9999-oo'kk");
-    this.authTokens.push(authToken);
-    await this.save();
-    return authToken;
-};
-*/
+
 module.exports = User;
