@@ -18,6 +18,7 @@ exports.login = async (req, res) => {
         if (checkpassword) {
             const authToken = jwt.sign({_id: checkmail._id.toString()},process.env.TOKEN_KEY/*,{expiresIn: process.env.TOKEN_AGE}*/);
             res.cookie('jwt',authToken, {httpOnly: true} );
+            
             /*res.status(200).json({user: checkmail._id});*/
             res.redirect('tdb');
         }
@@ -32,5 +33,9 @@ exports.login = async (req, res) => {
     }
 
  }
- 
 
+ exports.logout = (req, res) => {
+    res.cookie('jwt','',{maxAge:1});
+    res.cookie('id','',{maxAge:1});
+    res.redirect('/');
+ }
