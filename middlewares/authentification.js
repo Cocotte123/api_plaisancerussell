@@ -12,8 +12,7 @@ const authentification = (req, res, next) => {
             }
             else {
                 console.log(decodedToken);
-                res.cookie('id',decodedToken._id);
-                console.log(decodedToken._id);
+                
                 
                 
                 next();

@@ -1,0 +1,28 @@
+ <a href="/reservation/list"><button>Retour</button></a>
+ <div class="form-container">
+    <h3>Détails de la réservation</h3>
+        <div class="form-group d-flex">
+            <div>N° de catway : </div>
+            <div>{{reservationdetail.catwayNumber}}</div>
+        </div>
+        <div class="form-group d-flex">
+            <div>Nom du client : </div>
+            <div>{{reservationdetail.clientName}}</div>
+        </div>
+        <div class="form-group d-flex">
+            <div>Nom du bateau : </div>
+            <div>{{reservationdetail.boatName}}</div>
+        </div>
+        <div class="form-group d-flex">
+            <div>Date d'arrivée : </div>
+            <div>{{reservationdetail.checkIn}}</div>
+        </div>
+        <div class="form-group d-flex">
+            <div>Date de départ : </div>
+            <div>{{reservationdetail.checkOut}}</div>
+        </div>
+        <form  class="btn" action="/reservationdeleted/{{reservationdetail._id}}" method="POST">
+            <button>Supprimer</button>
+        </form>
+
+  </div>

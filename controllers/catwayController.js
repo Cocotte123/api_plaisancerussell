@@ -112,7 +112,33 @@ exports.createcatway = async (req, res) => {
 
  exports.deletecatway = async (req, res) => {
     const id = req.params.id;
-    await Catway.findOneAndDelete({}).where(id).lean();
+    console.log(id);
+    
+    await Catway.deleteOne({_id: id});
+
+    res.redirect('/catway/list');
+ }
+
+ exports.updatecatway = async (req, res) => {
+    const id = req.params.id;
+       
+   
+    console.log(id);
+    const catwaydetail = await Catway.findOne({_id: id}).lean();
+    res.render("updatecatway", {
+             title: "Modification d'un catway",
+             catwaydetail
+         });
+    
+    
+    
+ }
+
+ exports.updatecatwayform = async (req, res) => {
+    const id = req.params.id;
+    await Catway.updateOne({_id: id},{
+        catwayState: req.body.catwayState
+    });
    
     
     res.redirect('/catway/list');

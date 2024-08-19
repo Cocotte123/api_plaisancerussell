@@ -38,12 +38,12 @@ exports.createuser = async (req, res) => {
  exports.updateuserform = async (req, res) => {
     const id = req.params.id;
     const hashedPassword = await bcrypt.hash(req.body.password,10);
-    await User.findOneAndUpdate({
+    await User.updateOne({_id: id},{
         name: req.body.name,
         email: req.body.email,
         password : hashedPassword,
         updated: Date.now()
-    }).where(id).lean();
+    });
    
     
     res.redirect('/tdb');
@@ -52,7 +52,7 @@ exports.createuser = async (req, res) => {
 
  exports.deleteuser = async (req, res) => {
     const id = req.params.id;
-    await User.findOneAndDelete({}).where(id).lean();
+    await User.deleteOne({_id: id});
    
     
     res.redirect('/tdb');

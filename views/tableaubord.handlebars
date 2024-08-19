@@ -1,9 +1,9 @@
-  <h1>Tableau de bord de {{userConnectedDetail}}</h1>
+  <h1>Tableau de bord de {{userConnected}}</h1>
   <div class="col">
-    <a href="#utilisateur"><button>Utilisateur</button></a>
-    <a href="#catways"><button>Catways</button></a>
-    <a href="#reservations"><button>Réservations</button></a>
-    <a href="/logout"><button>Déconnexion</button></a>
+    <a href="#utilisateur"><button class="btn btn-primary">Utilisateur</button></a>
+    <a href="#catways"><button class="btn btn-primary">Catways</button></a>
+    <a href="#reservations"><button class="btn btn-primary">Réservations</button></a>
+    <a href="/logout"><button class="btn btn-primary">Déconnexion</button></a>
   </div>
   <h2 id="utilisateur">Utilisateur:</h2>
   <div class="form-container">
@@ -21,13 +21,13 @@
             <label for="password">Mot de passe utilisateur</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Enregistrer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
     </form>
 
   </div>
   <div>
     <h3>Liste des utilisateurs</h3>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Nom</th>
@@ -51,11 +51,11 @@
                 <td>
                     <div>
                         <a href="/user/{{this._id}}">
-                        <button>Modifier</button>
+                        <button class="btn btn-primary">Modifier</button>
                         </a>
                     </div>
                     <form  class="btn" action="/userdeleted/{{this._id}}" method="POST">
-                        <button>Supprimer</button>
+                        <button class="btn btn-primary">Supprimer</button>
                     </form>
                 </td>
             </tr>
@@ -82,9 +82,37 @@
                 <label for="catwayState">Etat du catway</label>
                 <input type="text" id="catwayState" name="catwayState" required>
             </div>
-            <button type="submit">Enregistrer</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>
 
     </div>
-    <a href="/catway/list"><button>Liste des catways</button></a>
+    <a href="/catway/list"><button class="btn btn-primary">Liste des catways</button></a>
   <h2 id="reservations">Réservations:</h2>
+  <div class="form-container">
+        <h3>Créer une réservation</h3>
+        <form action="/reservation" method="POST">
+            <div class="form-group">
+                <label for="catwayNumber">N° Catway</label>
+                <input type="number" id="catwayNumber" name="catwayNumber">
+            </div>
+            <div class="form-group">
+                <label for="clientName">Nom du client</label>
+                <input type="text" id="clientName" name="clientName">
+            </div>
+            <div class="form-group">
+                <label for="boatName">Nom du bateau</label>
+                <input type="text" id="boatName" name="boatName">
+            </div>
+            <div class="form-group">
+                <label for="checkIn">Date d'arrivée</label>
+                <input type="date" id="checkIn" name="checkIn">
+            </div>
+            <div class="form-group">
+                <label for="checkOut">Date de départ</label>
+                <input type="date" id="checkOut" name="checkOut">
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+
+    </div>
+    <a href="/reservation/list"><button class="btn btn-primary">Liste des réservations</button></a>

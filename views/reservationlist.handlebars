@@ -1,32 +1,30 @@
 <div>
     <a href="/tdb"><button>Retour</button></a>
-    <h3>Liste des catways</h3>
+    <h3>Liste des réservations</h3>
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">N° Catway</th>
-                <th scope="col">Type de catway</th>
-                <th scope="col">Etat du catway</th>
+                <th scope="col">Date d'arrivée</th>
+                <th scope="col">Date de départ</th>
                 <th scope="col">Id</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            {{#each catwayslist}}
+            {{#each reservationslist}}
             <tr>
                 <td>{{this.catwayNumber}}</td>
-                <td>{{this.type}}</td>
-                <td>{{this.catwayState}}</td>
+                <td>{{this.checkIn}}</td>
+                <td>{{this.checkOut}}</td>
                 <td>{{this._id}}</td>
                 <td>
                     <div>
-                        <a href="/catway/list/{{this._id}}">
-                        <button>Modifier l'état</button>
+                        <a href="/reservation/list/{{this._id}}">
+                        <button>Afficher détails</button>
                         </a>
                     </div>
-                    <form  class="btn" action="/catwaydeleted/{{this._id}}" method="POST">
-                        <button>Supprimer</button>
-                    </form>
+                    
                 </td>
             </tr>
             {{/each}}
