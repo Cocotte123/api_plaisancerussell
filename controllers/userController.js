@@ -3,7 +3,13 @@ const User = require('../models/user');
 
 
 
-
+/**
+     *Création de l'utilisateur :
+     * @typedef {Object} User
+     * @property {String} name nom utilisateur en saisie libre
+     * @property {String} email utilisateur en saisie libre avec vérification du format dans le formulaire
+     * @property {String} password - mot de passe utilsateur avec cryptage avant enregistrement dans la BDD
+     */
 exports.createuser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(req.body.password,10);
@@ -19,6 +25,10 @@ exports.createuser = async (req, res) => {
  
  }
 
+/**
+     *Affichage de la page de modification de l'utilisateur : 
+     * tous les champs sont affichés et modifiables
+     */
 
  exports.updateuser = async (req, res) => {
     const id = req.params.id;
@@ -35,6 +45,11 @@ exports.createuser = async (req, res) => {
     
  }
 
+ /**
+     *Modification de l'utilisateur à partir de son id issu de la ligne sélectionnée: tous les champs sont possibles
+     * ajout d'une date de modification à la date du jour
+     */
+
  exports.updateuserform = async (req, res) => {
     const id = req.params.id;
     const hashedPassword = await bcrypt.hash(req.body.password,10);
@@ -48,7 +63,9 @@ exports.createuser = async (req, res) => {
     
     res.redirect('/tdb');
  }
- 
+ /**
+     *Suppression de l'utilisateur à partir de son id issu de la ligne sélectionnée:
+     */
 
  exports.deleteuser = async (req, res) => {
     const id = req.params.id;
