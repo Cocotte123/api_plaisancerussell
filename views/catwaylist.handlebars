@@ -6,8 +6,8 @@
             <tr>
                 <th scope="col">N° Catway</th>
                 <th scope="col">Type de catway</th>
-                <th scope="col">Etat du catway</th>
-                <th scope="col">Id</th>
+               
+                <!--<th scope="col">Id</th>-->
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -16,9 +16,14 @@
             <tr>
                 <td>{{this.catwayNumber}}</td>
                 <td>{{this.type}}</td>
-                <td>{{this.catwayState}}</td>
-                <td>{{this._id}}</td>
+               
+                <!--<td>{{this._id}}</td>-->
                 <td>
+                    <div>
+                        <a href="/catway/list/details/{{this._id}}">
+                        <button>Détails</button>
+                        </a>
+                    </div>
                     <div>
                         <a href="/catway/list/{{this._id}}">
                         <button>Modifier l'état</button>

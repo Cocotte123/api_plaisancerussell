@@ -1,0 +1,22 @@
+{
+    "plugins": [
+        "plugins/markdown",
+        "plugins/summarize"
+    ],
+    "recurseDepth": 10,
+    "source": {
+        "include": ["controllers","middlewares","models","public","routes","services","views"],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs|.env)"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true
+    },
+    "destination": "./docs/"
+}
